@@ -17,7 +17,7 @@ public class MainCharacterScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        RB.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime);
+        RB.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * movementSpeed * Time.deltaTime;
     }
 
 
