@@ -4,45 +4,22 @@ using UnityEngine;
 
 public class MainCharacterScript : MonoBehaviour
 {
-    public float movementSpeed;
-    public Rigidbody2D RB;
-    private Vector2 MoveDirecction;
-
+    [SerializeField]
+    private float movementSpeed;
+    private Rigidbody2D RB;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        RB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        ProcessInputs();
-    }
-
-
     void FixedUpdate()
     {
-        Move();
+        RB.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime);
     }
 
-    void ProcessInputs()
-    {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        MoveDirecction = new Vector2(moveX, moveY).normalized;
-    }
-
-    void Move()
-    {
-        RB.velocity = new Vector2(MoveDirecction.x * movementSpeed, MoveDirecction.y * movementSpeed);
-    }
-
-    private void OnAnimatorMove()
-    {
-        
-    }
 
 
 }
